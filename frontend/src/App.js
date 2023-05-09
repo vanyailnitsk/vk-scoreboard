@@ -10,7 +10,7 @@ const App = observer(() => {
     document.body.style.backgroundColor = '#f6f6f9';
     
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <NavBar />
             <AppRouter />
         </BrowserRouter>
