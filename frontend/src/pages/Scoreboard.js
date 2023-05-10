@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "..";
 import { observer } from "mobx-react-lite";
-import { fetchAlgorithmTasks, fetchGlobalScores, fetchTestScores, fetchTestTasks } from "../http/tasksAPI";
+import { fetchAlgorithmTasks, fetchCyberSecurityTasks, fetchGlobalScores, fetchTestScores, fetchTestTasks } from "../http/tasksAPI";
 import { check } from "../http/userAPI";
 import { Container } from "react-bootstrap";
 
@@ -13,6 +13,7 @@ const Scoreboard = observer(() => {
             user.setUser(data)
             user.setTestScores(data.testScores)
             user.setAlgorithmScores(data.algorithmScores)
+            user.setCyberSecurityScores(data.cyberSecurityScores)
             user.setIsAuth(true)
         })
         fetchTestTasks().then(data => {
@@ -23,11 +24,16 @@ const Scoreboard = observer(() => {
         fetchAlgorithmTasks().then(data => {
             tasks.setAlgorithmTasks(data)
             console.log(data)
-            console.log(tasks.algorithmTasks)
+            console.log(tasks._algorithmTasks)
+        })
+        fetchCyberSecurityTasks().then(data => {
+            tasks.setCyberSecurityTasks(data)
         })
         fetchGlobalScores().then(data => {
             user.setTestRank(data.testRank)
             user.setAlgorithmRank(data.algorithmRank)
+            user.setCyberSecurityRank(data.cyberSecurityRank)
+            console.log(user)
         })
     }, [])
     return (
@@ -36,6 +42,7 @@ const Scoreboard = observer(() => {
             <div>
                 <h5>{'Вы занимаете '+user._testRank +' место в категории \"Тест\"'}</h5>
                 <h5>{'Вы занимаете '+user._algorithmRank +' место в категории \"Алгоритмы\"'}</h5>
+                <h5>{'Вы занимаете '+user._cyberSecurityRank +' место в категории \"Кибербезопасность\"'}</h5>
             </div>
             <h2>Ваш прогресс в решении задач</h2>
             <div>
@@ -51,6 +58,14 @@ const Scoreboard = observer(() => {
                 {user.algorithmScores.map(task =>
                     <h6>
                         {task.algorithmTask.title}
+                    </h6>
+                )}
+            </div>
+            <div>
+                <h4>{'Категория \"Кибербезопасноть\": решено ' + user._cyberSecurityScores.length + ' из ' + tasks._cyberSecurityTasks.length}</h4>
+                {user._cyberSecurityScores.map(task =>
+                    <h6>
+                        {task.task.title}
                     </h6>
                 )}
             </div>

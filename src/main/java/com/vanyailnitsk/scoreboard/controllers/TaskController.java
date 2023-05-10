@@ -2,6 +2,7 @@ package com.vanyailnitsk.scoreboard.controllers;
 
 import com.vanyailnitsk.scoreboard.services.TaskService;
 import com.vanyailnitsk.scoreboard.tasks.AlgorithmTask;
+import com.vanyailnitsk.scoreboard.tasks.CyberSecurityTask;
 import com.vanyailnitsk.scoreboard.tasks.TestTask;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +27,10 @@ public class TaskController {
     @GetMapping("/test/all")
     public List<TestTask> getTestTasks() {
         return taskService.getTestTasks();
+    }
+
+    @GetMapping("/cyberSecurity/all")
+    public List<CyberSecurityTask> getCyberSecurityTasks() {
+        return taskService.getCyberSecurityTasks();
     }
 }

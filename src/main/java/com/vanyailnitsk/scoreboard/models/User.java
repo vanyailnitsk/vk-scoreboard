@@ -1,6 +1,7 @@
 package com.vanyailnitsk.scoreboard.models;
 
 import com.vanyailnitsk.scoreboard.tasks.AlgorithmTaskResult;
+import com.vanyailnitsk.scoreboard.tasks.CyberSecurityTaskResult;
 import com.vanyailnitsk.scoreboard.tasks.TestResult;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,6 +37,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<AlgorithmTaskResult> algorithmScores;
+
+    @OneToMany(mappedBy = "user")
+    private List<CyberSecurityTaskResult> cyberSecurityScores;
 
     public User() {
     }
@@ -98,6 +102,14 @@ public class User implements UserDetails {
 
     public void setAlgorithmScores(List<AlgorithmTaskResult> algorithmScores) {
         this.algorithmScores = algorithmScores;
+    }
+
+    public List<CyberSecurityTaskResult> getCyberSecurityScores() {
+        return cyberSecurityScores;
+    }
+
+    public void setCyberSecurityScores(List<CyberSecurityTaskResult> cyberSecurityScores) {
+        this.cyberSecurityScores = cyberSecurityScores;
     }
 
     public int getTestTasksCompleted() {

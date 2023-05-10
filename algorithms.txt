@@ -1,0 +1,8 @@
+Two Sum
+Valid Parentheses
+Valid Anagram
+Find Minimum in Rotated Sorted Array
+Daily Temperatures
+Group Anagrams
+Valid Palindrome
+Evaluate Polish Reverse Notation

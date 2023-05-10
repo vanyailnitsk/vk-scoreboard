@@ -3,17 +3,17 @@ package com.vanyailnitsk.scoreboard.config;
 import com.vanyailnitsk.scoreboard.models.Role;
 import com.vanyailnitsk.scoreboard.models.User;
 import com.vanyailnitsk.scoreboard.repositories.*;
-import com.vanyailnitsk.scoreboard.tasks.AlgorithmTask;
-import com.vanyailnitsk.scoreboard.tasks.AlgorithmTaskResult;
-import com.vanyailnitsk.scoreboard.tasks.TestResult;
-import com.vanyailnitsk.scoreboard.tasks.TestTask;
+import com.vanyailnitsk.scoreboard.tasks.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 @Configuration
@@ -23,6 +23,7 @@ public class TestConfig {
     private final UserRepository userRepository;
     private final AlgorithmTaskRepository algorithmTaskRepository;
     private final AlgorithmTaskResultRepository algorithmTaskResultRepository;
+    private final CyberSecurityTaskRepository cyberSecurityTaskRepository;
     private final PasswordEncoder passwordEncoder;
 
     public TestConfig(TestTaskRepository testTaskRepository,
@@ -30,12 +31,13 @@ public class TestConfig {
                       UserRepository userRepository,
                       AlgorithmTaskRepository algorithmTaskRepository,
                       AlgorithmTaskResultRepository algorithmTaskResultRepository,
-                      PasswordEncoder passwordEncoder) {
+                      CyberSecurityTaskRepository cyberSecurityTaskRepository, PasswordEncoder passwordEncoder) {
         this.testTaskRepository = testTaskRepository;
         this.testScoreRepository = testScoreRepository;
         this.userRepository = userRepository;
         this.algorithmTaskRepository = algorithmTaskRepository;
         this.algorithmTaskResultRepository = algorithmTaskResultRepository;
+        this.cyberSecurityTaskRepository = cyberSecurityTaskRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -43,6 +45,9 @@ public class TestConfig {
     @Transactional
     CommandLineRunner commandLineRunner() {
         return args -> {
+            initializeAlgorithms();
+            initializeTests();
+            initializeCyber();
             TestTask test1 = new TestTask("Тест по инфраструктуре VK");
             test1 = testTaskRepository.save(test1);
             User user = new User("Ivan","vanya",passwordEncoder.encode("pass"));
@@ -64,5 +69,28 @@ public class TestConfig {
             AlgorithmTaskResult algorithmTaskResult = new AlgorithmTaskResult(user,algorithmTask,true);
             algorithmTaskResultRepository.save(algorithmTaskResult);
         };
+    }
+
+    public void initializeAlgorithms() throws FileNotFoundException {
+        String fileName = "algorithms.txt";
+        Scanner in = new Scanner(new File(fileName));
+        while (in.hasNext()) {
+            algorithmTaskRepository.save(new AlgorithmTask(in.nextLine()));
+        }
+    }
+    public void initializeTests() throws FileNotFoundException {
+        String fileName = "tests.txt";
+        Scanner in = new Scanner(new File(fileName));
+        while (in.hasNext()) {
+            testTaskRepository.save(new TestTask(in.nextLine()));
+        }
+    }
+
+    public void initializeCyber() throws FileNotFoundException {
+        String fileName = "cybersecurity.txt";
+        Scanner in = new Scanner(new File(fileName));
+        while (in.hasNext()) {
+            cyberSecurityTaskRepository.save(new CyberSecurityTask(in.nextLine()));
+        }
     }
 }

@@ -45,8 +45,9 @@ public class UserService {
         User user = userRepository.findByEmail(email);
         rank.setTestRank(users.indexOf(user)+1);
         users.sort((u1,u2) -> u2.getAlgorithmScores().size() - u1.getAlgorithmScores().size());
-        System.out.println(users);
         rank.setAlgorithmRank(users.indexOf(user)+1);
+        users.sort((u1,u2) -> u2.getCyberSecurityScores().size() - u1.getCyberSecurityScores().size());
+        rank.setCyberSecurityRank(users.indexOf(user));
         return rank;
     }
 

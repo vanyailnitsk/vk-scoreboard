@@ -3,13 +3,15 @@ package com.vanyailnitsk.scoreboard.models;
 public class GlobalRank {
     private int testRank;
     private int algorithmRank;
+    private int cyberSecurityRank;
 
     public GlobalRank() {
     }
 
-    public GlobalRank(int testRank, int algorithmRank) {
+    public GlobalRank(int testRank, int algorithmRank, int cyberSecurityRank) {
         this.testRank = testRank;
         this.algorithmRank = algorithmRank;
+        this.cyberSecurityRank = cyberSecurityRank;
     }
 
     public int getTestRank() {
@@ -26,5 +28,13 @@ public class GlobalRank {
 
     public void setAlgorithmRank(int algorithmRank) {
         this.algorithmRank = algorithmRank;
+    }
+
+    public int getCyberSecurityRank() {
+        return cyberSecurityRank;
+    }
+
+    public void setCyberSecurityRank(int cyberSecurityRank) {
+        this.cyberSecurityRank = cyberSecurityRank;
     }
 }

@@ -19,3 +19,8 @@ export const fetchAlgorithmTasks = async ()  => {
     const {data} = await $host.get('tasks/algorithm/all')
     return data
 }
+
+export const fetchCyberSecurityTasks = async ()  => {
+    const {data} = await $host.get('tasks/cyberSecurity/all')
+    return data
+}

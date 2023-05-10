@@ -3,10 +3,11 @@ import React, { useContext } from "react";
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { authRoutes, publicRoutes } from "../routes";
 import { Context } from "..";
+import Auth from "../pages/Auth";
+import Tasks from "../pages/Tasks";
 
 const AppRouter = observer(() => {
-    const { user } = useContext(Context)
-    console.log(user)
+    const {user} = useContext(Context)
     return (
         //<Router>
         <Routes>

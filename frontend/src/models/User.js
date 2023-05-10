@@ -8,8 +8,10 @@ export default class User {
         this._user = {}
         this._testScores = []
         this._algorithmScores = []
+        this._cyberSecurityScores = []
         this._testRank = -1
         this._algorithmRank = -1
+        this._cyberSecurityRank = -1
         makeAutoObservable(this)
     }
     setIsAuth(bool) {
@@ -24,11 +26,17 @@ export default class User {
     setAlgorithmScores(Scores) {
         this._algorithmScores = Scores
     }
+    setCyberSecurityScores(testScores) {
+        this._cyberSecurityScores= testScores
+    }
     setAlgorithmRank(rank) {
         this._algorithmRank = rank
     }
     setTestRank(rank) {
         this._testRank = rank
+    }
+    setCyberSecurityRank(rank) {
+        this._cyberSecurityRank= rank
     }
     get isAuth() {
         return this._isAuth
@@ -43,4 +51,7 @@ export default class User {
         return this._algorithmScores
     }
 
+    get cyberSecurityScores() {
+        return this._cyberSecurityScores
+    }
 }

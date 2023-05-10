@@ -1,6 +1,6 @@
 import NavBar from "./components/NavBar";
 import AppRouter from "./components/AppRouter";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
 import { Context } from ".";
@@ -10,7 +10,7 @@ const App = observer(() => {
     document.body.style.backgroundColor = '#f6f6f9';
     
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
             <NavBar />
             <AppRouter />
         </BrowserRouter>

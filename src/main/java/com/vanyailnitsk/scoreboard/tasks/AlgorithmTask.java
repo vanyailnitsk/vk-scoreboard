@@ -27,6 +27,10 @@ public class AlgorithmTask {
         this.examples = examples;
     }
 
+    public AlgorithmTask(String title) {
+        this.title = title;
+    }
+
     public Integer getAlgorithmTaskId() {
         return algorithmTaskId;
     }
