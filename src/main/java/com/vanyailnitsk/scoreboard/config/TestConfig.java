@@ -50,26 +50,26 @@ public class TestConfig {
             initializeAlgorithms();
             initializeTests();
             initializeCyber();
-//            TestTask test1 = new TestTask("Тест по инфраструктуре VK");
-//            test1 = testTaskRepository.save(test1);
-//            User user = new User("Ivan","vanya",passwordEncoder.encode("pass"));
-//            user.setRoles(Set.of(Role.ROLE_USER));
-//            user = userRepository.save(user);
-//            TestResult testScore1 = new TestResult(test1,98);
-//            testScore1.setUser(user);
-//            testScoreRepository.save(testScore1);
-//            User user1 = new User("Kolya","kolya",passwordEncoder.encode("pass"));
-//            user1.setRoles(Set.of(Role.ROLE_USER));
-//            user1 = userRepository.save(user1);
-//            TestResult testResult = new TestResult(test1,100);
-//            testResult.setUser(user1);
-//            testScoreRepository.save(testResult);
-//            AlgorithmTask algorithmTask = new AlgorithmTask("Two Sum","Дан массив целых чисел num и целочисленное целевое значение, верните индексы двух чисел таким образом, чтобы они в сумме равнялись целевому значению.\n" +
-//                    "\nВы можете предположить, что каждый входной сигнал будет иметь ровно одно решение, и вы не можете использовать один и тот же элемент дважды.", List.of("Input: nums = [2,7,11,15], target = 9\n" +
-//                    "Output: [0,1]"));
-//            algorithmTask = algorithmTaskRepository.save(algorithmTask);
-//            AlgorithmTaskResult algorithmTaskResult = new AlgorithmTaskResult(user,algorithmTask,true);
-//            algorithmTaskResultRepository.save(algorithmTaskResult);
+            TestTask test1 = new TestTask("Тест по инфраструктуре VK");
+            test1 = testTaskRepository.save(test1);
+            User user = new User("Ivan","vanya",passwordEncoder.encode("pass"));
+            user.setRoles(Set.of(Role.ROLE_USER));
+            user = userRepository.save(user);
+            TestResult testScore1 = new TestResult(test1,98);
+            testScore1.setUser(user);
+            testScoreRepository.save(testScore1);
+            User user1 = new User("Kolya","kolya",passwordEncoder.encode("pass"));
+            user1.setRoles(Set.of(Role.ROLE_USER));
+            user1 = userRepository.save(user1);
+            TestResult testResult = new TestResult(test1,100);
+            testResult.setUser(user1);
+            testScoreRepository.save(testResult);
+            AlgorithmTask algorithmTask = new AlgorithmTask("Two Sum","Дан массив целых чисел num и целочисленное целевое значение, верните индексы двух чисел таким образом, чтобы они в сумме равнялись целевому значению.\n" +
+                    "\nВы можете предположить, что каждый входной сигнал будет иметь ровно одно решение, и вы не можете использовать один и тот же элемент дважды.", List.of("Input: nums = [2,7,11,15], target = 9\n" +
+                    "Output: [0,1]"));
+            algorithmTask = algorithmTaskRepository.save(algorithmTask);
+            AlgorithmTaskResult algorithmTaskResult = new AlgorithmTaskResult(user,algorithmTask,true);
+            algorithmTaskResultRepository.save(algorithmTaskResult);
         };
     }
 
