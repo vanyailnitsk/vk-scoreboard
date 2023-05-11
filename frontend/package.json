@@ -1,6 +1,5 @@
 {
   "name": "frontend",
-  "homepage": "https://vanyailnitsk.github.io/vk-scoreboard/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

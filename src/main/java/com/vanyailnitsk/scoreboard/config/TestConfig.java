@@ -4,6 +4,7 @@ import com.vanyailnitsk.scoreboard.models.Role;
 import com.vanyailnitsk.scoreboard.models.User;
 import com.vanyailnitsk.scoreboard.repositories.*;
 import com.vanyailnitsk.scoreboard.tasks.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,7 @@ public class TestConfig {
     private final CyberSecurityTaskRepository cyberSecurityTaskRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Autowired
     public TestConfig(TestTaskRepository testTaskRepository,
                       TestResultRepository testScoreRepository,
                       UserRepository userRepository,
@@ -43,7 +45,7 @@ public class TestConfig {
 
     @Bean
     @Transactional
-    CommandLineRunner commandLineRunner() {
+    public CommandLineRunner commandLineRunner() {
         return args -> {
             initializeAlgorithms();
             initializeTests();
