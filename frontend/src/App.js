@@ -5,10 +5,12 @@ import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
 import { Context } from ".";
 import { check } from "./http/userAPI";
+import { fetchAlgorithmTasks, fetchCyberSecurityTasks, fetchGlobalScores, fetchTestTasks } from "./http/tasksAPI";
 
 const App = observer(() => {
     document.body.style.backgroundColor = '#f6f6f9';
     const {user} = useContext(Context)
+    const {tasks} = useContext(Context)
     useEffect(() => {
         fetchTestTasks().then(data => {
             tasks.setTestTasks(data)
