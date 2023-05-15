@@ -31,7 +31,7 @@ const Auth = observer( () => {
             user.setIsAuth(true)
             user.setTestScores(data.testScores)
             navigate(SCOREBOARD_ROUTE)
-            console.log(user)
+            window.location.reload(true)
         } catch (e) {
             alert(e.response.data.message)
         }
