@@ -8,37 +8,6 @@ import { Container } from "react-bootstrap";
 const Scoreboard = observer(() => {
     const { user } = useContext(Context)
     const { tasks } = useContext(Context)
-    useEffect(() => {
-        if (localStorage.getItem("token") == null) {
-            return 
-        }
-        check().then(data => {
-            user.setUser(data)
-            user.setTestScores(data.testScores)
-            user.setAlgorithmScores(data.algorithmScores)
-            user.setCyberSecurityScores(data.cyberSecurityScores)
-            user.setIsAuth(true)
-        })
-        fetchTestTasks().then(data => {
-            tasks.setTestTasks(data)
-            console.log(data)
-            console.log(tasks)
-        })
-        fetchAlgorithmTasks().then(data => {
-            tasks.setAlgorithmTasks(data)
-            console.log(data)
-            console.log(tasks._algorithmTasks)
-        })
-        fetchCyberSecurityTasks().then(data => {
-            tasks.setCyberSecurityTasks(data)
-        })
-        fetchGlobalScores().then(data => {
-            user.setTestRank(data.testRank)
-            user.setAlgorithmRank(data.algorithmRank)
-            user.setCyberSecurityRank(data.cyberSecurityRank)
-            console.log(user)
-        })
-    }, [])
     return (
         <Container>
             <div>

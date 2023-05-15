@@ -8,6 +8,35 @@ import { check } from "./http/userAPI";
 
 const App = observer(() => {
     document.body.style.backgroundColor = '#f6f6f9';
+    const {user} = useContext(Context)
+    useEffect(() => {
+        fetchTestTasks().then(data => {
+            tasks.setTestTasks(data)
+        })
+        fetchAlgorithmTasks().then(data => {
+            tasks.setAlgorithmTasks(data)
+        })
+        fetchCyberSecurityTasks().then(data => {
+            tasks.setCyberSecurityTasks(data)
+        })
+        if (localStorage.getItem("token") == null) {
+            return 
+        }
+        check().then(data => {
+            user.setUser(data)
+            user.setTestScores(data.testScores)
+            user.setAlgorithmScores(data.algorithmScores)
+            user.setCyberSecurityScores(data.cyberSecurityScores)
+            user.setIsAuth(true)
+        }).then(() => {
+            fetchGlobalScores().then(data => {
+                user.setTestRank(data.testRank)
+                user.setAlgorithmRank(data.algorithmRank)
+                user.setCyberSecurityRank(data.cyberSecurityRank)
+                console.log(user)
+            })
+        })
+    })
     
     return (
         <BrowserRouter>
