@@ -39,7 +39,6 @@ const Scoreboard = observer(() => {
             console.log(user)
         })
     }, [])
-    if (user.isAuth) {
     return (
         <Container>
             <div>
@@ -72,7 +71,7 @@ const Scoreboard = observer(() => {
                 )}
             </div>
             <div>
-                <h4>{'Категория \"Кибербезопасноть\": решено ' + user._cyberSecurityScores.length + ' из ' + tasks._cyberSecurityTasks.length}</h4>
+                <h4>{'Категория \"Кибербезопасность\": решено ' + user._cyberSecurityScores.length + ' из ' + tasks._cyberSecurityTasks.length}</h4>
                 {user._cyberSecurityScores.map(task =>
                     <h6>
                         {task.task.title}
@@ -80,12 +79,7 @@ const Scoreboard = observer(() => {
                 )}
             </div>
         </Container>
-    )}
-    else {
-        return (
-            <div>Пользователь не авторизован</div>
-        )
-    }
+    )
 })
 
 export default Scoreboard;
