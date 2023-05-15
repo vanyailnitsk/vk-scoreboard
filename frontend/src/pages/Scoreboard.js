@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "..";
 import { observer } from "mobx-react-lite";
-import { fetchAlgorithmTasks, fetchCyberSecurityTasks, fetchGlobalScores, fetchTestScores, fetchTestTasks } from "../http/tasksAPI";
+import { fetchAlgorithmTasks, fetchCyberSecurityTasks, fetchGlobalScores, fetchTestTasks } from "../http/tasksAPI";
 import { check } from "../http/userAPI";
 import { Container } from "react-bootstrap";
 
@@ -41,7 +41,6 @@ const Scoreboard = observer(() => {
     }, [])
     if (user.isAuth) {
     return (
-        
         <Container>
             <div>
                <h2> Информация для проверяющего:</h2>

@@ -11,6 +11,7 @@ const NavBar = observer(() => {
     const navigate = useNavigate()
     const logOut = () => {
         user.setUser({})
+        user = {}
         user.setIsAuth(false)
         localStorage.clear()
         navigate(TASKS_ROUTE)
