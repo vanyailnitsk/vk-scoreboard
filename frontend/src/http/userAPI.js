@@ -18,7 +18,6 @@ export const login = async (email, password) => {
 }
 
 export const check = async () => {
-    console.log(localStorage.getItem("token"))
     if (localStorage.getItem("token") == null) {
         return 
     }

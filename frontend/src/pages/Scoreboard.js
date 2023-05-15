@@ -39,6 +39,7 @@ const Scoreboard = observer(() => {
             console.log(user)
         })
     }, [])
+    if (user.isAuth) {
     return (
         
         <Container>
@@ -80,7 +81,12 @@ const Scoreboard = observer(() => {
                 )}
             </div>
         </Container>
-    );
+    )}
+    else {
+        return (
+            <div>Пользователь не авторизован</div>
+        )
+    }
 })
 
 export default Scoreboard;

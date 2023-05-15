@@ -4,7 +4,7 @@ import { makeAutoObservable } from "mobx"
 
 export default class User {
     constructor() {
-        this._isAuth = true
+        this._isAuth = false
         this._user = {}
         this._testScores = []
         this._algorithmScores = []
